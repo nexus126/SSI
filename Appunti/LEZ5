@@ -1,0 +1,45 @@
+Firma Digitale
+Dato un documento digitale in formato .pdf,.xml,... questo viene dato in pasto
+ad una funzione hash come kekkak,sha256,...
+Dopodiché l'hash del documento viene criptato con la chiave privata di colui
+che invia il documento.(formato p7m)
+Ad una firma viene allegato un certificato che dovrebbe essere emesso da una
+CA (ciò viene verificato).
+P7m è un formato standard per l'utilizzo di firme digitali.
+Come si passa dalla firma manuale alla firma digitale in una procedura?
+A differenza della firma manuale, la firma digitale scade per un motivo di 
+sicurezza.
+Il problema della scadenza delle chiavi è risolto con una terza entità che
+effettua la marca temporale di un documento.
+La firma manuale può essere applicata solo su determinati formati (fisici) a 
+differenza della firma digitale che può essere applicata a tutti i possibili
+formati digitali(.mp4,eseguibili...).
+Quando un utente firma un file non vede precisamente il file
+(in formato binario).L'utente non è in grado di visualizzare e comprendere il
+file in formato binario.Per visualizzare/comprendere il file l'utente si affida
+ad un programma (editor,adobe reader,...).
+Quindi effettivamente l'utente sta visualizzando ciò che il programma gli
+mostra e lo firma fidandosi. I file potrebbero essere dinamici (contenere
+macro per l'aggiornamento di una data) e ciò potrebbe non essere mostrato dal
+programma di lettura.
+Come si utilizza la firma digitale nel caso di documenti in cui serve la firma
+multipla?
+FIRMA A MATRIOSCA (formato CADES)
+Il primo utente che firma , crea un documento con 
+D1=<documento firmato da 1, certificato 1, certification autority>.
+Questo documento viene firmato dal secondo utente che crea un documento con:
+<D1 firmato da 2, certificato 2, certification authority>.
+...
+Come si utilizza la firma digitale nel caso di documenti in cui le firme vengono
+fatte da diversi enti secondo una struttura gerarchica?
+Ad esempio firma ingegnere,firma assessore,firma sindaco nelle determine...
+Come si utilizza la firma digitale nei contratti in cui ci sono clausole
+vessatorie che andrebbero firmate esplicitamente?
+Acrobat ha proposto il formato PADES approvato dalla Legge.
+In PADES Acrobat consente di firmare solo una parte del documento mantenendone
+l'unicità.
+NOTA: i formati proprietari non hanno valore legale
+Un altro nuovo formato per l'utilizzo di firme digitali è XADES.
+Come si utilizza la firma digitale nella fase di autentica della firma?
+Ad esempio il notaio è presente al momento della firma di un contratto fungendo
+da garante (come si traduce ciò quando si usa la firma digitale??)...

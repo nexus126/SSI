@@ -1,0 +1,59 @@
+Requisiti di un'area sicura...
+
+Crittografia Simmetrica: serve un canale sicuro su cui scambiare la chiave 
+condivisa
+Crittografia Assimmetrica: serve un canale nel quale si scambia l'informazione
+secondo cui a un'indentità viene associata una chiave pubblica.
+Il problema della Crittografia Asimmetrica si risolve introducendo nel sistema
+un'ente che si erge ad Authority e che assegna dei certificati che assegnano
+ad ogni utente la chiave pubblica.
+Questi certificati sono detti "Self Signed".
+
+Certificati Digitali
+Un certicato digitale ha: 
+	- un formato standard X509
+	- un Issuer(emittente)
+	- un Subject(soggetto che riceve il certificato)
+	- una Public Key
+	- Informazioni come DataIn,DataOut,Scope(dominio di utilizzo),...
+	- Firma Digitale
+
+Consideriamo l'esempio della chiave pubblica del rettore di un'università.
+Dunque un certificato digitale "Self Signed" per il rettore dell'università
+ha sia come Issuer che come Subject il rettore dell'università.
+Questo certificato è detto Root CA ed è un certificato "Self Signed".
+Esiste anche un altro tipo di certificato detto Sub CA nel quale cambia lo scope
+rispetto al Root CA.
+Nei certificati "Self Signed" Subject ed Issuer coincidono.
+Altri tipi di certificato digitale sono:
+- TLS/SSL client
+- TLS/SSL server
+Molto spesso la fiducia nelle banche è data dalla loro fisicità(edifici).
+Nella crittografia asimmetrica tutti i certificati degli utenti sono firmati
+con la chiave pubblica del certificato CA.Quindi tutti gli utenti possono 
+verificare le firme di tutti i certificati conoscendo la chiave della CA.
+Quindi a differenza della crittografia simmetrica non serve che tutti gli
+utenti si incontrino.È sufficiente che tutti conoscono la chiave pubblica della
+root CA per poter verificare tutti gli altri certificati.
+Il problema ora è spostato sulla veridicità del certificato della CA.
+A livello applicativo del Web i browser hanno cablate al suo interno una serie
+di root CA.Pertanto i browser accettano tutti i certificati che siano emessi 
+da quelle root CA.
+Quindi per una qualsiasi organizzazione è indispensabile inserire la sua CA
+all'interno dei browser.
+Protocollo TLS
+Quando ha a che fare con un certificato un browser verifica:
+- se il formato e la struttura del certificato sono corretti (controllo formale)
+- se l'issuer fa parte delle authority trusted (verifica della firma digitale),
+  cioè se il certifcato è emesso a un'autorità fidata.
+   - le authority trusted possono trovarsi all'interno del sistema operativo
+   - i certificati CA potrebbero essere cablati nel browser
+- controlla le date di scadenza,gli scoop...
+Se tutti questi controlli passano allora è stata superata la prima fase del
+protocollo TLS.
+
+ESERCIZIO: ottenere errore certificato nel protocollo TLS
+	- creare certfificato di root CA con OpenSSL
+	  oppure 
+	- eliminare un certificato di root CA da quelli cablati nel browser
+

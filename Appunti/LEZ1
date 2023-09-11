@@ -1,0 +1,40 @@
+Sicurezza nei Sistemi Distribuiti Cooperativi
+È difficile definire la sicurezza di un sistema informativo.
+ESEMPIO CASA
+Cosa rende sicura la casa oltre cancello/inferriate/cani da guardia?
+Quali sono i vantaggi che si hanno rispetto agli attaccanti?
+- Conoscenza totale sulla nostra casa(quindi i punti deboli)
+- Dalla casa posso vedere chi viene(posso prevedere l'attacco)
+
+Nel realizzare un Sistema Informativo al quale possono accedere dei client.
+In analogia la casa è il sistema informativo e i client sono coloro che vi 
+possono accedere(anche attaccanti).
+Quando progetto un sistema informativo devo rappresentarlo a diversi livelli.
+Quindi devo fornire un modello per ogni strato di sicurezza.
+Il primo strato è quello fisico.
+Quindi devo fornire una rappresentazione della rete fisica poiché le prime
+vulnerabilità ci sono a partire da questo strato(TCP/IP).
+Al livello superiore posso rappresentare il modello astraendo la rete fisica.
+Ad esempio VMWARE(ambiente di virtualizzazione della rete) ha effettuato un
+attacco sullo strato software e non fisico.
+Gli attaccanti sfruttano un punto di debolezza di uno strato e cercano di 
+muoversi verso altri punti di sicurezza.
+L'architettura di un sistema operativo/informativo è progettata a strati ma 
+esistono dei casi in cui ci si può muovere facendo dei salti da uno strato 
+all'altro e ciò costituisce delle vulnerabilità.
+Un sistema informativo è un'architettura multistrato che di fatto consente
+l'esecuzione di operazioni che saltano gli strati intermedi.
+Ho molti strati tra i quali non c'è separazione netta(salti tra strati non 
+adiacenti).Pertanto non devo solamente fornire difesa per uno strato ma anche
+tra coppie di strati(tutte le possibili coppie di strati).
+Un esempio di attacco in una macchina reale è lo stack overflow.
+Quindi non ci sono solo le vulnerabilità delle configurazioni/protocolli ma
+anche i limiti delle macchine(spazio della memoria,insieme di operazioni
+eseguibili contemporaneamente).
+Come mai nonostante tutte queste vulnerabilità i sistemi funzionano
+generalmente bene(nella maggior parte dei casi)?
+Solitamente l'attaccante può agire in un tempo inversamente proporzionale ai
+danni che provoca.Quando l'attaccante viene scoperto il difensore riconosce
+la vulnerabilità e potenzia il sistema.
+Dunque il difensore vuole minimizzare i tempi(delay time) dell'attacco mentre
+invece l'attaccante li vuole massimizzare.

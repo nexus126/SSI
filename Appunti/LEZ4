@@ -1,0 +1,59 @@
+PKI (Public Key Infrastructure)
+
+In un sistema in cui è stata introdotta la CA authority ogni utente si 
+è recato fisicamente dall'Authority a ritirare la sua chiave pubblica.
+La chiave pubblica della CA si trova cablata all'interno del Certificato Self
+Signed.
+Dopodiché all'interno di questo sistema tutti gli utenti potranno 
+comunicare tra di loro attraverso i loro certificati rilasciati e firmati dalla
+CA.Quindi in questo sistema detto PKI non serve che ogni coppia di utente si
+scambi la chiave su un canale sicuro.
+Ora, supponiamo che per qualche motivo si voglia "eliminare" un certificato: 
+- perché l'utente a cui appartiene questo certificato potrebbe essere uscito
+  dal sistema
+- perché l'utente a cui appartiene il certificato è stato derubato
+- per scadenza naturale(serve un rinnovo)
+Dunque,una PKI deve provvedere anche a problemi di questo tipo.
+Una CA emette periodicamente una lista di certificati revocati (CRL).
+Per garantire una serie di compiti tra cui l'autenticazione delle parti c'è
+bisogno di una PKI.
+Consideriamo un'organizzazione tipo Poste Italiane allora un browser deve poter
+leggere il suo certificato(contenente chaive pubblica).Ma questo certificato
+potrebbe arrivare da chiunque volesse spacciarsi per Poste Italiane.
+Dunque serve che il browser invii una challenge a colui che gli ha inviato
+il certificato.Quindi il browser genera un numero random (o stringa random) e lo
+cripta con la chiave pubblica di Poste Italiane.
+Questo meccanismo elimina uno dei requisiti dell'attacco bruteforce.
+Infatti nel bruteforce l'attaccante ha bisogno di conoscere i messaggio in
+chiaro e il messaggio criptato per poter trovare tra tutte le chiavi quella
+che li collega.In questo caso l'attaccante non è a conoscenza del messaggio in
+chiaro che sarebbe la stringa/numero random generato dall'attacante.
+Il protocollo TLS utilizza una chiave simmetrica perché la gli algoritmi di
+crittografia simmetrica sono più robusti di quelli di crittografia asimmetrica.
+In sistemi tipo quest'utimo vi è una gerarchia tra i vari utenti.
+Infatti tutto si regge sul fatto che la CA sia trusted.
+Questo tipo di sistemi è detto gerarchico e le aziende ne sono un esempio.
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+

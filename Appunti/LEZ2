@@ -1,0 +1,70 @@
+Gli strumenti di base della sicurezza informatica sono:
+- l'informatica di base
+- la crittografia: strumento principale 
+- l'analisi statistica: apprendere dagli eventi passati(anomaly detection system)
+Quali sono gli obiettivi della sicurezza informatica?
+Uno dei problemi principali legati ai servizi web è la tracciatura importante
+per risalire alle cause di alcuni eventi.È fondamentale che un file di log sia 
+progettato in un modo specifico(permessi,modifiche,aggiornamenti).
+È importante in ambito giuridico saper scrivere un record che sia tecnico e allo
+stesso tempo comprensibile.
+
+SICUREZZA NEI SISTEMI GERARCHICI
+Requisiti di un servizio web 2.0 (ad esempio un sistema di Home Banking):
+- usabilità(velocità)
+	Senza un algoritmo di crittografia veloce è difficile gestire il carico).
+- disponibilità(server)
+- non ripudiabiità(dire che non hai fatto qualcosa che hai fatto)
+	Considerando la crittografia simmetrica banca e cliente condividono
+	la stessa chiave.Non si ha non ripudiabilità in quanto un messaggio 
+	potrebbe essere cifrato sia dalla banca che dal cliente.
+	La banca potrebbe dire che un messaggio cifrato con la chiave condivisa
+	sia stato mandato dal cliente.D'altra parte il cliente potrebbe dire che
+	il messaggio è invece stato cifrato malintenzionalmente dalla banca 
+	essendo essa in possesso della chiave pubblica(condivisa).
+- riservatezza(segretezza)
+- autenticazione delle parti
+- separazione delle responsabilità(di chi è la colpa se avviene qualcosa)
+	Nella crittografia simmetrica Alice e Bob si scambiano le chiavi 
+	inizialmente.Si usa una chiave sola sia per cifrare ma anche per
+	decifrare.L'algoritmo è pubblico e il segreto sta nella chiave.
+	Ai fini della sicurezza Alice non può mai fidarsi completamente di Bob.
+	Se Bob anche in buona fede non custodisce la chiave ne paga le conseguenze
+	anche Alice.
+	Dunque serve un modello organizzativo che stabilisca delle resposabilità.
+	Nel caso del servizio Home Banking è difficile gestire la separazione
+	delle responsabilità.Necessità fiducia.
+- procedure di crittografia robusta
+	La crittografia simmetrica è più robusta di quella asimmetrica.
+- non necessità di un canale sicuro per lo scambio delle chiavi.
+	Nella crittofia simmetrica solo le estremità della transazione devono
+	conoscere la chiave pubblica.	
+- basso numero di chiavi da gestire
+	Con la chiave simmetrica in un sistema di n estremi devono esserci
+	"n binomiale 2" chiavi;cioè una chiave per ogni coppia.
+
+Nella crittografia asimmetrica ogni estremo ha una coppia di chiavi pubblica
+e privata.Le due chiavi sono legate matematicamente e sono tali che con l'una
+si può fare l'operazione inversa che si fa con l'altra.
+RSA è un protocollo di crittografia asimmetrica ideato negli anni 70'.
+Ogni estremo usa un algoritmo per dotarsi di una coppia di chiavi.
+La banca che è un estremo genera la coppia (pub_k,priv_k).
+La banca rende pubblica solamente pub_k.
+Se un cliente della banca vuole inviare un messaggio che possa leggere la banca,
+allora lo cifrerà con pub_k così che solo lei possa leggerlo.
+Quindi rispetto alla crittografia simmetrica ho uno spazio delle chiavi minore.
+Lo spazio delle chiavi conterrà solamente la coppia per ogni utente(2n chiavi).
+Come fa un destinatario a conoscere il mittente?
+	OSS:Effettivamente il messaggio viene solamente cifrato con la chiave pub
+	    del destinatario.
+Come fa un utente a reclamare di aver cifrato un messaggio?...All'inverso...
+c'è la "non ripudiabilità"?
+Entrambi i requisiti sono garantiti con la Firma Digitale.
+La Firma Digitale è una tecnologia ulteriore attraverso la quale un mittente
+può reclamare di aver scritto il messaggio.
+Come si associa la chiave pubblica ad un'identità?
+Ci si deve affidare ad un'autorità.Ad esempio il rettorato di un'università
+assegna la mail ad un docente.
+Serve però un certificato nel quale si garantisce che una determinata chiave è 
+stata assegnata ad una determinata identità.È importante che questo certificato
+sia leggibile e non modificabile.
